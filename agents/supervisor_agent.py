@@ -25,6 +25,7 @@ import json
 import logging
 from typing import Dict, Any, List, Optional
 from datetime import datetime
+import boto3
 
 from shared.utils import (
     invoke_bedrock,
@@ -42,6 +43,9 @@ from shared.models import AgentState, Job, Candidate
 
 logger = logging.getLogger()
 logger.setLevel(Config.LOG_LEVEL)
+
+# Initialize Lambda client for agent invocation
+lambda_client = boto3.client('lambda', region_name=Config.AWS_REGION)
 
 
 class SupervisorAgent:
@@ -75,6 +79,195 @@ class SupervisorAgent:
             "Initialized",
             {"pipeline": self.agent_pipeline}
         )
+    
+    def _invoke_agent(self, agent_name: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Invoke worker agent Lambda function
+        
+        This method handles Lambda-to-Lambda invocation for worker agents.
+        It sends the payload to the specified agent and returns the response.
+        
+        Args:
+            agent_name: Name of agent (sourcing, screening, outreach, scheduling, evaluation)
+            payload: Task payload for agent
+            
+        Returns:
+            Agent response dict
+            
+        Example:
+            >>> supervisor = SupervisorAgent()
+            >>> result = supervisor._invoke_agent('sourcing', {'job_id': 'job-123'})
+        
+        Reference: 16_module_build_checklist.md - Phase 5, Step 5.1
+        """
+        function_name = f"talent-acq-{agent_name}"
+        
+        try:
+            logger.info(f"Invoking {agent_name} agent (Lambda: {function_name})")
+            
+            response = lambda_client.invoke(
+                FunctionName=function_name,
+                InvocationType='RequestResponse',
+                Payload=json.dumps(payload)
+            )
+            
+            response_payload = json.loads(response['Payload'].read())
+            
+            if response_payload.get('statusCode') == 200:
+                body = json.loads(response_payload['body'])
+                logger.info(f"{agent_name} agent completed successfully")
+                return body
+            else:
+                error_msg = f"{agent_name} agent failed with status {response_payload.get('statusCode')}"
+                logger.error(error_msg)
+                return format_error_response(
+                    error_msg,
+                    {"response": response_payload},
+                    "AgentInvocationFailed"
+                )
+                
+        except Exception as e:
+            logger.error(f"Failed to invoke {agent_name}: {str(e)}")
+            return format_error_response(
+                f"Lambda invocation failed: {str(e)}",
+                {"agent_name": agent_name, "function_name": function_name},
+                "LambdaInvocationError"
+            )
+    
+    def _execute_workflow(self, workflow_state: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Execute workflow tasks sequentially with agent invocation
+        
+        This method orchestrates the complete workflow by:
+        1. Iterating through all tasks in sequence
+        2. Invoking the appropriate agent for each task
+        3. Passing results from previous tasks to next tasks
+        4. Stopping workflow if any agent fails
+        5. Saving state after each task completion
+        
+        Args:
+            workflow_state: Dict containing workflow configuration and state
+                - workflow_id: Unique workflow identifier
+                - job_id: Job ID being recruited for
+                - tasks: List of tasks to execute
+                - completed_tasks: List of completed tasks (updated during execution)
+                
+        Returns:
+            Dict with workflow execution results
+            
+        Example:
+            >>> supervisor = SupervisorAgent()
+            >>> workflow_state = {
+            >>>     'workflow_id': 'wf-123',
+            >>>     'job_id': 'job-456',
+            >>>     'tasks': [
+            >>>         {'agent': 'sourcing', 'parameters': {'target_count': 50}},
+            >>>         {'agent': 'screening', 'parameters': {'min_score': 0.7}}
+            >>>     ],
+            >>>     'completed_tasks': []
+            >>> }
+            >>> result = supervisor._execute_workflow(workflow_state)
+        
+        Reference: 16_module_build_checklist.md - Phase 5, Step 5.1
+        """
+        tasks = workflow_state['tasks']
+        results = []
+        
+        logger.info(f"Executing workflow {workflow_state['workflow_id']} with {len(tasks)} tasks")
+        
+        for i, task in enumerate(tasks):
+            agent_name = task['agent']
+            
+            # Check if task depends on previous task
+            if task.get('depends_on'):
+                # Get results from previous task
+                prev_results = results[-1] if results else {}
+                task['parameters']['previous_results'] = prev_results
+            
+            # Invoke agent
+            logger.info(f"Executing task {i+1}/{len(tasks)}: {agent_name}")
+            result = self._invoke_agent(agent_name, task)
+            
+            if result.get('status') != 'success':
+                # Task failed - stop workflow
+                logger.error(f"Workflow failed at task {i}: {agent_name}")
+                return {
+                    'workflow_id': workflow_state['workflow_id'],
+                    'status': 'failed',
+                    'failed_at_task': i,
+                    'error': result.get('error', 'Unknown error'),
+                    'completed_tasks': results
+                }
+            
+            results.append(result)
+            
+            # Update workflow state
+            workflow_state['completed_tasks'].append({
+                'task_index': i,
+                'agent': agent_name,
+                'result': result,
+                'completed_at': get_timestamp()
+            })
+            
+            # Save state to DynamoDB
+            save_to_dynamodb(Config.AGENT_STATE_TABLE, {
+                'stateId': workflow_state['workflow_id'],
+                'agentType': 'supervisor',
+                'state': workflow_state,
+                'lastUpdated': get_timestamp()
+            })
+        
+        # All tasks completed successfully
+        workflow_state['status'] = 'completed'
+        
+        logger.info(f"Workflow {workflow_state['workflow_id']} completed successfully")
+        
+        return {
+            'workflow_id': workflow_state['workflow_id'],
+            'status': 'completed',
+            'results': results,
+            'summary': self._generate_workflow_summary(results)
+        }
+    
+    def _generate_workflow_summary(self, results: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Generate human-readable workflow summary from agent results
+        
+        Aggregates key metrics from all agent executions into a concise summary.
+        
+        Args:
+            results: List of result dicts from each agent
+            
+        Returns:
+            Dict with aggregated summary metrics
+            
+        Example:
+            >>> supervisor = SupervisorAgent()
+            >>> results = [
+            >>>     {'status': 'success', 'data': {'summary': {'candidates_found': 50}}},
+            >>>     {'status': 'success', 'data': {'summary': {'qualified': 15}}}
+            >>> ]
+            >>> summary = supervisor._generate_workflow_summary(results)
+            >>> print(summary['total_tasks'])  # 2
+        
+        Reference: 16_module_build_checklist.md - Phase 5, Step 5.1
+        """
+        summary = {
+            'total_tasks': len(results),
+            'successful_tasks': sum(1 for r in results if r.get('status') == 'success')
+        }
+        
+        # Extract key metrics from each agent
+        for result in results:
+            if 'data' in result:
+                data = result['data']
+                if 'summary' in data:
+                    # Merge agent-specific summaries
+                    summary.update(data['summary'])
+        
+        logger.info(f"Generated workflow summary: {summary}")
+        
+        return summary
     
     def start_workflow(self, job_id: str, workflow_config: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
