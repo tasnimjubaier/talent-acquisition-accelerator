@@ -15,9 +15,15 @@ References:
 """
 
 from agents.supervisor_agent import SupervisorAgent
+from agents.sourcing_agent import SourcingAgent
+from agents.screening_agent import ScreeningAgent
+from agents.outreach_agent import OutreachAgent
 
 __all__ = [
-    'SupervisorAgent'
+    'SupervisorAgent',
+    'SourcingAgent',
+    'ScreeningAgent',
+    'OutreachAgent'
 ]
 
 __version__ = '0.1.0'
