@@ -46,3 +46,5 @@ Thumbs.db
 test-results/
 coverage/
 response.json
+
+docs-internal/
