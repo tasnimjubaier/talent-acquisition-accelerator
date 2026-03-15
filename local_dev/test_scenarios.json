@@ -1,0 +1,71 @@
+[
+  {
+    "scenario_name": "Software Engineer - High Volume",
+    "description": "Test sourcing and screening with large candidate pool",
+    "job": {
+      "title": "Senior Software Engineer",
+      "description": "We're looking for an experienced software engineer to join our platform team. You'll work on building scalable microservices and improving system reliability.",
+      "requirements": {
+        "required_skills": ["Python", "AWS", "Docker", "Kubernetes"],
+        "preferred_skills": ["React", "PostgreSQL", "Redis"],
+        "min_years_experience": 5,
+        "education_level": "Bachelor's degree in Computer Science or related field"
+      },
+      "department": "Engineering",
+      "location": "San Francisco, CA",
+      "remote_allowed": true,
+      "salary_range": {
+        "min": 140000,
+        "max": 180000
+      }
+    },
+    "expected_candidates": 100,
+    "expected_qualified": 15
+  },
+  {
+    "scenario_name": "Data Scientist - Specialized",
+    "description": "Test screening with specific technical requirements",
+    "job": {
+      "title": "Senior Data Scientist",
+      "description": "Join our ML team to build predictive models and data pipelines. You'll work on recommendation systems and user behavior analysis.",
+      "requirements": {
+        "required_skills": ["Python", "Machine Learning", "SQL", "Statistics"],
+        "preferred_skills": ["TensorFlow", "PyTorch", "Spark", "AWS"],
+        "min_years_experience": 4,
+        "education_level": "Master's degree in Data Science, Statistics, or related field"
+      },
+      "department": "Data Science",
+      "location": "Remote",
+      "remote_allowed": true,
+      "salary_range": {
+        "min": 130000,
+        "max": 170000
+      }
+    },
+    "expected_candidates": 50,
+    "expected_qualified": 10
+  },
+  {
+    "scenario_name": "Product Manager - Leadership",
+    "description": "Test evaluation and recommendation for senior role",
+    "job": {
+      "title": "Senior Product Manager",
+      "description": "Lead product strategy for our core platform. You'll define roadmaps, work with engineering teams, and drive user growth.",
+      "requirements": {
+        "required_skills": ["Product Management", "Agile", "Data Analysis", "Stakeholder Management"],
+        "preferred_skills": ["B2B SaaS", "API Products", "Technical Background"],
+        "min_years_experience": 6,
+        "education_level": "Bachelor's degree in Business, Engineering, or related field"
+      },
+      "department": "Product",
+      "location": "New York, NY",
+      "remote_allowed": false,
+      "salary_range": {
+        "min": 150000,
+        "max": 190000
+      }
+    },
+    "expected_candidates": 30,
+    "expected_qualified": 8
+  }
+]

@@ -1,8 +1,9 @@
-# Demo Video Script
+# Demo Video Script (UPDATED WITH FRONTEND)
 
 **Target Duration:** 3 minutes  
 **Category:** Agentic AI  
-**Hashtag:** #AmazonNova
+**Hashtag:** #AmazonNova  
+**Demo Type:** Interactive Web Application
 
 ---
 
@@ -10,124 +11,179 @@
 
 ### Opening (0:00 - 0:30) - Problem & Solution
 
-**Visual:** Title slide with project name and logo
+**Visual:** Title slide → Live web application home page
 
 **Script:**
 "Hiring the right talent is one of the biggest challenges companies face today. Recruiters spend hours manually sourcing candidates, screening resumes, and coordinating interviews. What if AI agents could handle this entire workflow intelligently?
 
-Meet the Talent Acquisition Accelerator - a multi-agent recruiting system powered by Amazon Nova that automates the complete hiring pipeline from job posting to candidate evaluation."
+Meet the Talent Acquisition Accelerator - a full-stack multi-agent recruiting system powered by Amazon Nova that automates the complete hiring pipeline from job posting to candidate evaluation."
 
 **Key Points:**
 - State the problem clearly
+- Show live web application immediately
 - Introduce the solution
 - Mention Amazon Nova prominently
+- Emphasize "full-stack" capability
 
 ---
 
-### Demo Part 1: System Overview (0:30 - 1:00)
+### Demo Part 1: Job Posting (0:30 - 1:00)
 
-**Visual:** Architecture diagram showing 5 agents + supervisor
+**Visual:** Screen recording of web application - job posting form
 
 **Script:**
-"Our system uses 5 specialized AI agents, each powered by Amazon Nova, working together under a supervisor agent:
+"Let's create a job posting for a Senior Software Engineer position.
 
-1. The Sourcing Agent finds and ranks candidates from multiple sources
-2. The Screening Agent evaluates qualifications against job requirements
-3. The Outreach Agent generates personalized messages
-4. The Scheduling Agent coordinates interview times
-5. The Evaluation Agent synthesizes all data into hiring recommendations
+[Show filling out the form]
 
-Let's see it in action."
+Our intuitive interface makes it easy to define requirements - job title, description, required skills with autocomplete, experience range with a slider, and location preferences.
+
+[Click 'Start Recruiting Pipeline']
+
+With one click, we launch our multi-agent system. Behind the scenes, 5 specialized AI agents powered by Amazon Nova are coordinating to handle the entire recruiting workflow.
+
+[Transition to workflow dashboard]
+
+Let's watch them work in real-time."
 
 **Key Points:**
-- Show architecture visually
-- Explain each agent's role briefly
-- Transition to live demo
-
+- Show professional, modern UI
+- Demonstrate ease of use
+- Highlight form features (autocomplete, slider)
+- Smooth transition to workflow
+- Mention Amazon Nova and multi-agent system
 
 ---
 
-### Demo Part 2: Live Workflow (1:00 - 2:15)
+### Demo Part 2: Live Workflow Dashboard (1:00 - 1:45)
 
-**Visual:** Screen recording of actual system execution
+**Visual:** Workflow dashboard with real-time updates
 
 **Script:**
-"Here's a real recruiting workflow for a Senior Software Engineer position.
+"Here's our workflow dashboard showing all 5 agents in action.
 
-[Show job posting input]
+[Show progress tracker]
 
-First, the Sourcing Agent analyzes the job requirements and searches for candidates. In seconds, it finds 30 qualified candidates and ranks them by fit score.
+The Sourcing Agent is analyzing job requirements and searching for candidates. Watch as it finds and ranks 30 qualified candidates in seconds.
 
-[Show sourcing results - candidate list with scores]
+[Show agent status cards updating]
 
-Next, the Screening Agent evaluates each candidate's skills and experience. It identifies 12 highly qualified candidates and provides detailed reasoning for each assessment.
+Now the Screening Agent evaluates each candidate's skills and experience. It's identifying the top 12 highly qualified candidates with detailed assessments.
 
-[Show screening results - top candidates with scores]
+[Show candidate pipeline appearing]
 
-The Outreach Agent then generates personalized messages for each candidate, referencing their specific background and skills.
+The Outreach Agent generates personalized messages for each candidate, referencing their specific background and skills.
 
-[Show sample outreach message]
+[Show cost tracker]
 
-The Scheduling Agent proposes optimal interview times, handling timezone differences and conflicts automatically.
+Notice our real-time cost tracker - the entire pipeline costs less than 50 cents in AWS credits.
 
-[Show scheduling interface]
+[Show activity feed]
 
-Finally, the Evaluation Agent synthesizes all the data and provides a ranked list of top candidates with comprehensive hiring recommendations.
+The Scheduling Agent coordinates optimal interview times, and the Evaluation Agent synthesizes everything into comprehensive hiring recommendations.
 
-[Show final evaluation report with top candidate]
+[Show completion notification]
 
-The entire pipeline completed in under 60 seconds and cost less than 50 cents in AWS credits."
+Pipeline complete! Let's see the results."
 
 **Key Points:**
-- Show actual system output at each stage
-- Highlight speed and cost efficiency
-- Emphasize AI reasoning and personalization
-- Show real data, not mockups
+- Show real-time agent coordination
+- Highlight visual progress indicators
+- Emphasize speed and cost efficiency
+- Show professional dashboard design
+- Demonstrate live updates and animations
 
 ---
 
-### Demo Part 3: Technical Highlights (2:15 - 2:45)
+### Demo Part 3: Results Visualization (1:45 - 2:30)
 
-**Visual:** Code snippets and technical architecture
+**Visual:** Results page with charts and rankings
 
 **Script:**
-"Under the hood, we're leveraging Amazon Nova's advanced capabilities:
+"Here are our results, beautifully visualized.
 
-- Nova Lite for fast candidate sourcing and matching
-- Nova Pro for complex evaluation and reasoning
-- Multi-agent coordination using CrewAI framework
-- Serverless deployment on AWS Lambda
-- Real-time state management with DynamoDB
+[Show top candidates podium]
 
-The system handles edge cases intelligently - flagging over-qualified candidates, noting career gaps for discussion, and filtering out skills mismatches."
+Our top 3 candidates are ranked by match score - Alex Chen at 95%, Jordan Martinez at 92%, and Priya Patel at 88%.
+
+[Show skill match radar chart]
+
+This radar chart shows how each candidate's skills align with our requirements. Alex excels in Python, AWS, and system design.
+
+[Show candidate pipeline]
+
+We can filter and sort through all candidates, view detailed profiles, and export to CSV.
+
+[Show outreach message preview]
+
+Here's the personalized outreach message generated for Alex - notice how it references their specific GitHub contributions and career trajectory.
+
+[Show interview schedule]
+
+The system has already proposed optimal interview times, handling timezone differences automatically.
+
+[Show final recommendations]
+
+And here's our AI-powered hiring recommendation with detailed reasoning - Alex Chen is a strong hire with exceptional technical depth and cultural fit."
 
 **Key Points:**
-- Highlight Amazon Nova usage
+- Showcase beautiful visualizations
+- Highlight interactive charts
+- Demonstrate filtering and sorting
+- Show personalization quality
+- Emphasize AI reasoning and insights
+
+---
+
+### Demo Part 4: Technical Highlights (2:30 - 2:50)
+
+**Visual:** Split screen - UI + architecture diagram + code snippet
+
+**Script:**
+"Under the hood, we're leveraging cutting-edge technology:
+
+[Show architecture diagram]
+
+Amazon Nova Lite powers fast candidate sourcing and matching, while Nova Pro handles complex evaluation and reasoning.
+
+[Show code snippet]
+
+Our serverless architecture runs on AWS Lambda with DynamoDB for state management, and our React + Next.js frontend provides a seamless user experience.
+
+[Show agent coordination]
+
+The multi-agent system handles edge cases intelligently - flagging over-qualified candidates, noting career gaps, and filtering mismatches.
+
+This is a production-ready, full-stack AI application."
+
+**Key Points:**
+- Highlight Amazon Nova usage (Lite + Pro)
 - Show technical sophistication
-- Mention AWS services
+- Mention full tech stack
+- Emphasize production-ready quality
 - Demonstrate intelligent reasoning
 
-
 ---
 
-### Closing: Impact & Call to Action (2:45 - 3:00)
+### Closing: Impact & Call to Action (2:50 - 3:00)
 
-**Visual:** Impact metrics and GitHub link
+**Visual:** Impact metrics → Live demo link → GitHub link
 
 **Script:**
 "The Talent Acquisition Accelerator reduces recruiting time by 80%, cuts costs by 70%, and improves candidate quality through AI-powered insights.
 
-This is the future of recruiting - intelligent, efficient, and scalable.
+Try the live demo yourself at the link below, and check out the code on GitHub.
 
-Check out the code on GitHub and try it yourself. Built with Amazon Nova for the Amazon Nova AI Hackathon.
+Built with Amazon Nova for the Amazon Nova AI Hackathon.
 
 #AmazonNova"
 
 **Key Points:**
 - Quantify business impact
-- Include call to action
+- Show live demo URL prominently
 - Show GitHub repository link
-- Display #AmazonNova hashtag prominently
+- Display #AmazonNova hashtag
+- Call to action: try it yourself
 
 ---
 
