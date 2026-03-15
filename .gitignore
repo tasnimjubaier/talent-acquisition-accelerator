@@ -48,3 +48,5 @@ coverage/
 response.json
 
 docs-internal/
+
+frontend/node-module/
