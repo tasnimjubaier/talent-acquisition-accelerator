@@ -1,0 +1,176 @@
+{
+  "candidates": [
+    {
+      "candidate_id": "C001",
+      "name": "Alex Chen",
+      "email": "alex.chen@example.com",
+      "phone": "(555) 001-0001",
+      "location": "Seattle, WA",
+      "current_title": "Senior Software Engineer",
+      "current_company": "CloudTech Inc",
+      "tenure_current_role": "3 years",
+      "total_experience_years": 7,
+      "skills": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "GraphQL",
+        "AWS",
+        "Next.js",
+        "Redux",
+        "Jest"
+      ],
+      "education": {
+        "degree": "BS Computer Science",
+        "institution": "University of Washington",
+        "graduation_year": 2017
+      },
+      "github_url": "https://github.com/alexchen-demo",
+      "linkedin_url": "https://linkedin.com/in/alexchen-demo",
+      "expected_match_score": 0.92,
+      "expected_screening_score": 0.87,
+      "notes": "Strong match - all required skills, AWS certified, mentorship experience"
+    },
+    {
+      "candidate_id": "C002",
+      "name": "Jordan Martinez",
+      "email": "jordan.m@example.com",
+      "phone": "(555) 001-0002",
+      "location": "Portland, OR",
+      "current_title": "Lead Frontend Engineer",
+      "current_company": "FinTech Solutions",
+      "total_experience_years": 6,
+      "skills": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "GraphQL",
+        "Next.js",
+        "Testing"
+      ],
+      "education": {
+        "degree": "BS Software Engineering",
+        "institution": "Oregon State University",
+        "graduation_year": 2018
+      },
+      "expected_match_score": 0.89,
+      "expected_screening_score": 0.85,
+      "notes": "Strong technical skills, open source contributor"
+    }
+  ]
+}
+,
+    {
+      "candidate_id": "C003",
+      "name": "Priya Patel",
+      "email": "priya.patel@example.com",
+      "location": "Austin, TX (Remote)",
+      "current_title": "Senior Frontend Engineer",
+      "current_company": "SaaS Unicorn",
+      "total_experience_years": 8,
+      "skills": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "GraphQL",
+        "AWS",
+        "Next.js",
+        "Redux"
+      ],
+      "education": {
+        "degree": "MS Computer Science",
+        "institution": "University of Texas at Austin",
+        "graduation_year": 2016
+      },
+      "expected_match_score": 0.94,
+      "expected_screening_score": 0.91,
+      "notes": "Exceptional candidate - conference speaker, thought leader"
+    },
+    {
+      "candidate_id": "C004",
+      "name": "Sam Williams",
+      "email": "sam.w@example.com",
+      "location": "Denver, CO",
+      "current_title": "Software Engineer",
+      "total_experience_years": 5,
+      "skills": [
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "HTML/CSS"
+      ],
+      "education": {
+        "degree": "BS Computer Science",
+        "institution": "Colorado State University",
+        "graduation_year": 2019
+      },
+      "expected_match_score": 0.75,
+      "expected_screening_score": 0.72,
+      "notes": "Meets minimum requirements, lacks some preferred skills"
+    },
+    {
+      "candidate_id": "C005",
+      "name": "Morgan Lee",
+      "email": "morgan.lee@example.com",
+      "location": "San Francisco, CA",
+      "current_title": "Staff Software Engineer",
+      "current_company": "FAANG Company",
+      "total_experience_years": 12,
+      "skills": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "GraphQL",
+        "AWS",
+        "System Design"
+      ],
+      "education": {
+        "degree": "MS Computer Science",
+        "institution": "Stanford University",
+        "graduation_year": 2012
+      },
+      "expected_match_score": 0.88,
+      "expected_screening_score": 0.82,
+      "notes": "EDGE CASE: Over-qualified - may have retention risk"
+    },
+    {
+      "candidate_id": "C006",
+      "name": "Casey Brown",
+      "email": "casey.brown@example.com",
+      "location": "Chicago, IL",
+      "current_title": "Currently seeking opportunities",
+      "total_experience_years": 7,
+      "skills": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "GraphQL"
+      ],
+      "employment_gap": "1 year (2023-2024) - Family caregiving",
+      "expected_match_score": 0.80,
+      "expected_screening_score": 0.76,
+      "notes": "EDGE CASE: Career gap needs discussion"
+    },
+    {
+      "candidate_id": "C007",
+      "name": "Riley Johnson",
+      "email": "riley.j@example.com",
+      "location": "Seattle, WA",
+      "current_title": "Full Stack Developer",
+      "total_experience_years": 6,
+      "skills": [
+        "Vue.js",
+        "JavaScript",
+        "Python",
+        "Django"
+      ],
+      "expected_match_score": 0.58,
+      "expected_screening_score": 0.62,
+      "notes": "EDGE CASE: Skills mismatch - Vue instead of React"
+    }
+  ]
+}

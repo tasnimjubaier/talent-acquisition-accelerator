@@ -1,0 +1,106 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "SCENARIO-001",
+      "name": "Happy Path - Complete Recruiting Workflow",
+      "description": "Primary demo scenario showing all 5 agents working in sequence",
+      "job_id": "DEMO-JOB-001",
+      "expected_outcomes": {
+        "sourcing": {
+          "candidates_found": 30,
+          "min_match_score": 0.60
+        },
+        "screening": {
+          "qualified_candidates": 12,
+          "qualification_rate": 0.40,
+          "top_candidates": ["C003", "C001", "C002"]
+        },
+        "outreach": {
+          "messages_sent": 10,
+          "personalization_required": true
+        },
+        "scheduling": {
+          "interviews_scheduled": 5
+        },
+        "evaluation": {
+          "top_recommendation": "C003",
+          "min_score": 0.80
+        }
+      },
+      "success_criteria": [
+        "All stages complete successfully",
+        "Top 3 candidates correctly identified",
+        "Execution time < 60 seconds",
+        "Total cost < $0.50"
+      ],
+      "demo_video_timing": "120 seconds",
+      "key_highlights": [
+        "Multi-agent coordination",
+        "Amazon Nova integration",
+        "Intelligent candidate ranking",
+        "Personalized outreach"
+      ]
+    }
+  ]
+}
+,
+    {
+      "scenario_id": "SCENARIO-002",
+      "name": "High Volume Sourcing",
+      "description": "Demonstrates scalability with large candidate pools",
+      "job_id": "DEMO-JOB-001",
+      "config": {
+        "target_candidates": 100
+      },
+      "expected_outcomes": {
+        "sourcing": {
+          "candidates_found": 100,
+          "execution_time": 30
+        }
+      },
+      "success_criteria": [
+        "Sources 80+ candidates",
+        "Completes in < 30 seconds",
+        "Cost < $0.30"
+      ],
+      "demo_video_timing": "30 seconds",
+      "key_highlights": [
+        "Scalability",
+        "Performance optimization"
+      ]
+    },
+    {
+      "scenario_id": "SCENARIO-003",
+      "name": "Edge Case Handling",
+      "description": "Shows intelligent handling of non-standard candidates",
+      "job_id": "DEMO-JOB-001",
+      "test_candidates": ["C005", "C006", "C007"],
+      "expected_outcomes": {
+        "C005": {
+          "qualified": true,
+          "flag": "over-qualified",
+          "note": "Retention risk discussion needed"
+        },
+        "C006": {
+          "qualified": true,
+          "flag": "career-gap",
+          "note": "Gap explanation required"
+        },
+        "C007": {
+          "qualified": false,
+          "reason": "Missing required skills (React, TypeScript)"
+        }
+      },
+      "success_criteria": [
+        "Over-qualified candidate flagged appropriately",
+        "Career gap noted for discussion",
+        "Skills mismatch correctly rejected"
+      ],
+      "demo_video_timing": "45 seconds",
+      "key_highlights": [
+        "AI reasoning capabilities",
+        "Nuanced decision making"
+      ]
+    }
+  ]
+}

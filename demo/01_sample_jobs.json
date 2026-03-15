@@ -1,0 +1,57 @@
+{
+  "jobs": [
+    {
+      "job_id": "DEMO-JOB-001",
+      "title": "Senior Software Engineer - Frontend",
+      "company": "TechCorp",
+      "location": "Seattle, WA or Remote (US)",
+      "employment_type": "Full-time",
+      "required_skills": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "GraphQL"
+      ],
+      "preferred_skills": [
+        "AWS",
+        "Next.js",
+        "Redux",
+        "Testing (Jest, Cypress)"
+      ],
+      "experience_years": 5,
+      "description": "Lead frontend development for customer-facing products serving 2M+ users. Architect scalable React applications and mentor junior engineers.",
+      "responsibilities": [
+        "Design and implement complex frontend features",
+        "Lead technical architecture decisions",
+        "Mentor team of 5 engineers",
+        "Optimize application performance"
+      ],
+      "salary_range": "$150,000 - $180,000",
+      "target_candidates": 30
+    },
+    {
+      "job_id": "DEMO-JOB-002",
+      "title": "Senior Product Manager - B2B SaaS",
+      "company": "TechCorp",
+      "location": "San Francisco, CA (Hybrid)",
+      "employment_type": "Full-time",
+      "required_skills": [
+        "Product Management",
+        "B2B SaaS",
+        "Analytics",
+        "Stakeholder Management",
+        "Agile"
+      ],
+      "preferred_skills": [
+        "Technical Background",
+        "API Products",
+        "Enterprise Sales"
+      ],
+      "experience_years": 5,
+      "description": "Lead product strategy for enterprise SaaS platform serving Fortune 500 customers.",
+      "salary_range": "$140,000 - $170,000",
+      "target_candidates": 25
+    }
+  ]
+}
